@@ -13,7 +13,7 @@ const ScreenOptionStyle = {
     headerTintColor: "white",
 };
 
-const MainStackNavigator = ({navigation}) => {
+const MainStackNavigator = () => {
     return(
         <Stack.Navigator screenOptions={ScreenOptionStyle}>
             <Stack.Screen name="Home" component={Home}/>
