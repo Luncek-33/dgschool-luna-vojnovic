@@ -8,6 +8,10 @@ const Home = ({navigation}) => {
             <Button
                 title="Go to About screen"
                 onPress={()=> navigation.navigate("About")}></Button>
+            <Button 
+                style={styles.btn}
+                title="Go to Contact screen"
+                onPress={()=> navigation.navigate("Contact")}></Button>
         </View>
     );
 };
@@ -18,6 +22,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems:"center",
         justifyContent: "center"
+    },
+    btn:{
+        marginVertical: 20,
     }
 });
 
