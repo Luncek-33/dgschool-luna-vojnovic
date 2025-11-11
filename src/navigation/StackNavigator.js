@@ -2,7 +2,6 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import About from "../screens/About";
-import Contact from "../screens/Contact";
 
 const Stack = createStackNavigator();
 
@@ -13,14 +12,23 @@ const ScreenOptionStyle = {
     headerTintColor: "white",
 };
 
-const MainStackNavigator = () => {
+const MainStackNavigator = ({navigation}) => {
     return(
         <Stack.Navigator screenOptions={ScreenOptionStyle}>
             <Stack.Screen name="Home" component={Home}/>
+            
+        </Stack.Navigator>
+    )
+}
+const AboutStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            
             <Stack.Screen name="About" component={About}/>
-            <Stack.Screen name="Contact" component={Contact}/>
+            
         </Stack.Navigator>
     )
 }
 
-export default MainStackNavigator;
+
+export {MainStackNavigator, AboutStackNavigator};
