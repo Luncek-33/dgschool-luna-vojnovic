@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import MainStackNavigator from "./StackNavigator"; 
+import {MainStackNavigator} from "./StackNavigator"; 
 import Home from "../screens/Home";
 import About from "../screens/About";
 import Contact from "../screens/Contact";

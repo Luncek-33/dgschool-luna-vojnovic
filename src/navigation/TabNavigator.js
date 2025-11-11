@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MainStackNavigator, { AboutStackNavigator } from "./StackNavigator";
+import {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator } from "./StackNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -8,7 +8,7 @@ const BottomStackNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: "blue",
         tabBarInactiveTintColor: "lightgray",
         tabBarStyle: {
           backgroundColor: "#FF6347",
@@ -37,6 +37,21 @@ const BottomStackNavigator = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="video-stabilization"
+              size={26}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStackNavigator}
+        options={{
+          tabBarLabel: "Profile",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="user"
               size={26}
               color={color}
             />

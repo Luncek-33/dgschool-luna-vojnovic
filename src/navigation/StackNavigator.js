@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import About from "../screens/About";
+import Profile from "../screens/Profile";
 
 const Stack = createStackNavigator();
 
@@ -30,5 +31,14 @@ const AboutStackNavigator = ({navigation}) => {
     )
 }
 
+const ProfileStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            
+            <Stack.Screen name="Profile" component={Profile}/>
+            
+        </Stack.Navigator>
+    )
+}
 
-export {MainStackNavigator, AboutStackNavigator};
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator};
