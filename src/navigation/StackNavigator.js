@@ -3,6 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import Profile from "../screens/Profile";
+import Contact from "../screens/Contact";
+import { Settings } from "react-native";
+import settings from "../screens/Settings";
 
 const Stack = createStackNavigator();
 
@@ -41,4 +44,22 @@ const ProfileStackNavigator = ({navigation}) => {
     )
 }
 
-export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator};
+const ContactStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            
+            <Stack.Screen name="Contact" component={Contact}/>
+            
+        </Stack.Navigator>
+    )
+}
+
+const SettingsStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="Settings" component={settings}/>
+        </Stack.Navigator>
+    )
+}
+
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator};
