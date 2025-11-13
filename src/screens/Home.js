@@ -12,6 +12,12 @@ const Home = ({navigation}) => {
                 style={styles.btn}
                 title="Go to Contact screen"
                 onPress={()=> navigation.navigate("Contact")}></Button>
+
+            <Text>Drawer Navigaton Btton Functionality</Text>
+             <Button 
+                style={styles.btn}
+                title="Go to Open Drawer"
+                onPress={()=> navigation.openDrawer()}></Button>
         </View>
     );
 };

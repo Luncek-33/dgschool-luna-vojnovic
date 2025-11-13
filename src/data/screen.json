@@ -1,0 +1,17 @@
+[
+  {
+    "screenName": "Home",
+    "component": "Home",
+    "drawerIcon": "home"
+  },
+  {
+    "screenName": "About",
+    "component":"About",
+    "drawerIcon":"info"
+  },
+  {
+    "screenName": "Profile",
+    "component":"Profile",
+    "drawerIcon": "account"
+  }
+] 
