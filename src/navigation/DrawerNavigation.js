@@ -25,13 +25,12 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { AboutStackNavigator, ContactStackNavigator, ProfileStackNavigator } from "./StackNavigator";
 import BottomStackNavigator from "./TabNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { width } from "cli";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <DrawerNavigator
+    <Drawer.Navigator
       screenOptions={{
         hearderBackground: "#47ff50ff",
         drawerActiveTintColor: "white",
@@ -99,7 +98,7 @@ const DrawerNavigator = () => {
       />
       
       
-    </DrawerNavigator>
+    </Drawer.Navigator>
   );
 };
 

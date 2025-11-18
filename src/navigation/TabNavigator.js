@@ -27,7 +27,7 @@ class BottomStackNavigator extends React.Component {
         screenOptions={{
           tabBarActiveTintColor: "blue",
           tabBarInactiveTintColor: "lightgray",
-          tabBarStyle: { backgroundColor: "#FF6347" },
+          tabBarStyle: { backgroundColor: "#1d1e29ff" },
           tabBarLabelStyle: { fontSize: 12 },
           headerShown: false,
         }}
