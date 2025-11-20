@@ -1,4 +1,6 @@
-/*import React from "react";
+/*
+KOD OD ZADACE OD PRIJE
+import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {MainStackNavigator} from "./StackNavigator"; 
 import Home from "../screens/Home";
@@ -20,6 +22,8 @@ const DrawerNavigator = () => {
 };
 
 export default DrawerNavigator;*/
+
+/*KOD OD LEKCIJE easy medium 
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { AboutStackNavigator, ContactStackNavigator, ProfileStackNavigator } from "./StackNavigator";
@@ -102,4 +106,83 @@ const DrawerNavigator = () => {
   );
 };
 
+export default DrawerNavigator;*/
+
+//hard chellange
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import BottomStackNavigator from "./TabNavigator";
+import { AboutStackNavigator, ContactStackNavigator, ProfileStackNavigator } from "./StackNavigator";
+
+import screensData from "../data/screen.json";
+
+const Drawer = createDrawerNavigator();
+
+class DrawerNavigator extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      screens: [],
+    };
+  }
+
+  componentDidMount() {
+
+    this.setState({ screens: screensData });
+  }
+
+  render() {
+    const { screens } = this.state;
+
+    return (
+      <Drawer.Navigator
+        screenOptions={{
+          drawerActiveTintColor: "white",
+          drawerActiveBackgroundColor: "blue",
+          drawerInactiveTintColor: "#38e94fff",
+        }}
+      >
+
+        {screens.length === 0 && (
+          <Drawer.Screen
+            name="Loading"
+            component={() => null}
+            options={{ drawerItemStyle: { display: "none" } }}
+          />
+        )}
+
+        {screens.map((item, index) => (
+          <Drawer.Screen
+            key={index}
+            name={item.screenName}
+            component={
+              item.component === "Home"
+                ? BottomStackNavigator
+                : item.component === "About"
+                ? AboutStackNavigator
+                : item.component === "Contact"
+                ? ContactStackNavigator
+                : item.component === "Profile"
+                ? ProfileStackNavigator
+                : BottomStackNavigator
+            }
+            options={{
+              drawerIcon: ({ focused, color }) => (
+                <MaterialCommunityIcons
+                  name={focused ? item.drawerIcon : `${item.drawerIcon}-outline`}
+                  size={22}
+                  color={color}
+                />
+              ),
+            }}
+          />
+        ))}
+      </Drawer.Navigator>
+    );
+  }
+}
+
 export default DrawerNavigator;
+
