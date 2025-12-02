@@ -6,6 +6,8 @@ import Profile from "../screens/Profile";
 import Contact from "../screens/Contact";
 import { Settings } from "react-native";
 import settings from "../screens/Settings";
+import Ios from "../screens/Ios";
+import Favorites from "../screens/Favorites";
 
 const Stack = createStackNavigator();
 
@@ -62,4 +64,13 @@ const SettingsStackNavigator = ({navigation}) => {
     )
 }
 
-export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator};
+const IosStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="Ios" component={Ios}/>
+            <Stack.Screen name="Favorites" component={Favorites}/>
+        </Stack.Navigator>
+    )
+}
+
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator};

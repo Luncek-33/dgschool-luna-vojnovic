@@ -13,6 +13,7 @@ const Item = ({item}) => (
             <View style={styles.priceContainer}>
             <Text style={styles.price}>{item.price}</Text>
             <Text style={styles.price}>Previous Price: {item.previousPrice}</Text>
+            <Text style={styles.price}>Rating: {item.rating}</Text>
             </View>
         </View>
     </View>

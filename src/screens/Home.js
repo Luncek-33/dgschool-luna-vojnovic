@@ -33,7 +33,7 @@ class Home extends React.Component {
   }
 
   sortCheapest = () => {
-    const productsObj = this.state.products || {};
+    const productsObj = this.state.products || {}; 
     const arr = Array.isArray(productsObj.popularproducts)
       ? [...productsObj.popularproducts]
       : [];
@@ -127,7 +127,7 @@ class Home extends React.Component {
           </View>
           <View style={styles.grid}>
             {icons.map((item, index) => (
-              <Icon
+              <Icon 
                 key={index}
                 name={item.name}
                 size={item.size}
