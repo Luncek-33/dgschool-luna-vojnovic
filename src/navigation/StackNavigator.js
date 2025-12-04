@@ -8,6 +8,7 @@ import { Settings } from "react-native";
 import settings from "../screens/Settings";
 import Ios from "../screens/Ios";
 import Favorites from "../screens/Favorites";
+import Android from "../screens/Android";
 
 const Stack = createStackNavigator();
 
@@ -73,4 +74,11 @@ const IosStackNavigator = ({navigation}) => {
     )
 }
 
-export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator};
+const AndroidStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="Android" component={Android}/>
+        </Stack.Navigator>
+    )
+}
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator, AndroidStackNavigator};

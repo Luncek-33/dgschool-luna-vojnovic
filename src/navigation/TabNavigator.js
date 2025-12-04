@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator, FavoritesStackNavigator } from "./StackNavigator";
+import { MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator, FavoritesStackNavigator, AndroidStackNavigator } from "./StackNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -97,6 +97,17 @@ class BottomStackNavigator extends React.Component {
             tabBarLabel: "IOS",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="apple" size={26} color={color} />
+            ),
+          }}
+        />
+
+           <Tab.Screen
+          name="Android"
+          component={AndroidStackNavigator}
+          options={{
+            tabBarLabel: "Android",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="android" size={26} color={color} />
             ),
           }}
         />
