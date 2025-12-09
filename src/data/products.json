@@ -6,7 +6,9 @@
       "category": "Tablet",
       "price": "$880",
       "image": "https://images.unsplash.com/photo-1525101238777-8878781fc06d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
-      "description": "Lorem Ipsum dolor sit amet, ut labore et dolore magna aliqua."
+      "description": "The iPad 8 delivers an impressive balance of performance and simplicity, making it perfect for school, work, and entertainment. Its A12 Bionic chip keeps everything running smoothly, even in demanding apps. With all-day battery life, it’s an ideal choice for people who are always on the go.",
+      "rating": 4.5
+
     },
     {
       "id": 2,
@@ -14,7 +16,9 @@
       "category": "iOS",
       "price": "$750",
       "image": "https://images.unsplash.com/photo-1530319067432-f2a729c03db5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation."
+      "description": "The iPhone X introduced a bold new design with its edge-to-edge OLED display and advanced Face ID technology. It offers smooth performance and high-quality photos in a compact premium body. Even today, it remains a stylish and reliable choice for iOS users.",
+      "rating": 5
+
     },
     {
       "id": 3,
@@ -22,9 +26,12 @@
       "category": "Android",
       "price": "$990",
       "image": "https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation."
+      "description": "The Samsung S21 combines modern design, powerful performance, and one of the best displays on the market. Its fast processor ensures a smooth experience in gaming, multitasking, and daily use. The camera system captures sharp photos with excellent night mode quality.",
+      "rating": 4.5
+
     }
   ],
+
   "ios": [
     {
       "id": 1,
@@ -32,8 +39,8 @@
       "category": "iOS",
       "price": "$750",
       "image": "https://images.unsplash.com/photo-1530319067432-f2a729c03db5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation.",
-      "rating" :"3"
+      "description": "The iPhone X features a stunning OLED display with vibrant colors and deep contrast. Face ID works quickly and reliably, making unlocking effortless. With smooth performance and a premium feel, it remains a great option for fans of compact flagship phones.",
+      "rating": 3
     },
     {
       "id": 2,
@@ -41,8 +48,8 @@
       "category": "iOS",
       "price": "$999",
       "image": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation.",
-      "rating" : "4"
+      "description": "The iPhone 12 features a gorgeous Super Retina XDR display that delivers an incredibly sharp and bright visual experience. Powered by the A14 Bionic chip, it handles every task with outstanding speed. Its flat-edge design feels modern, and the cameras perform beautifully in any lighting.",
+      "rating": 4
     },
     {
       "id": 3,
@@ -50,8 +57,9 @@
       "category": "iOS",
       "price": "$999",
       "image": "https://images.unsplash.com/photo-1570963904764-fff966562bbd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation.",
-      "rating" : "5"
+      "description": "The iPhone 12 Pro stands out with its premium stainless-steel design and smooth matte glass finish. Its LiDAR sensor improves low-light photography and enhances AR features. With powerful performance and pro-level cameras, it remains a top-tier flagship experience.",
+      "rating": 5
+
     }
   ],
 
@@ -62,8 +70,10 @@
       "category": "Android",
       "price": "$990",
       "image": "https://images.unsplash.com/photo-1575571536958-38aa1227786a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation.",
-      "stock":"No"
+      "description": "This Xiaomi model is known for offering exceptional value by combining strong performance with an attractive price. It features fast hardware, smooth operation, and a great display for watching videos and browsing. Although currently out of stock, it remains highly popular among Android users.",
+      "stock": "No",
+      "rating": 3.5
+
     },
     {
       "id": 2,
@@ -71,8 +81,9 @@
       "category": "Android",
       "price": "$990",
       "image": "https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation.",
-      "stock": "Yes"
+      "description": "The Samsung S21 impresses with its stunning Dynamic AMOLED display and incredibly responsive performance. Its battery is optimized to last the entire day, even with heavy use. The advanced camera system delivers professional-grade photos and some of the best video stabilization available.",
+      "stock": "Yes",
+      "rating": 4.5
     }
   ]
 }

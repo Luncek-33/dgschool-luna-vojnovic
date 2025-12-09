@@ -29,11 +29,25 @@ class Home extends React.Component {
     this.state = {
       products: [],
       searchTerm: "",
+      favorites: [], 
     };
   }
 
+  
+  toggleFavorite = (product) => {
+    this.setState((prev) => {
+      const isFav = prev.favorites.includes(product.id);
+
+      return {
+        favorites: isFav
+          ? prev.favorites.filter((id) => id !== product.id)
+          : [...prev.favorites, product.id],
+      };
+    });
+  };
+
   sortCheapest = () => {
-    const productsObj = this.state.products || {}; 
+    const productsObj = this.state.products || {};
     const arr = Array.isArray(productsObj.popularproducts)
       ? [...productsObj.popularproducts]
       : [];
@@ -78,6 +92,7 @@ class Home extends React.Component {
 
   render() {
     const filteredProducts = this.getFilteredProducts();
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -89,6 +104,7 @@ class Home extends React.Component {
               onChangeText={this.handleSearch}
             />
           </View>
+
           <View style={styles.sliderContainer}>
             <Swiper
               autoplay={true}
@@ -125,9 +141,10 @@ class Home extends React.Component {
               </View>
             </Swiper>
           </View>
+
           <View style={styles.grid}>
             {icons.map((item, index) => (
-              <Icon 
+              <Icon
                 key={index}
                 name={item.name}
                 size={item.size}
@@ -136,11 +153,13 @@ class Home extends React.Component {
               />
             ))}
           </View>
+
           <View style={styles.sortConatiner}>
             <TouchableOpacity style={styles.btn} onPress={this.sortCheapest}>
               <Text style={styles.sortText}>From Cheapest</Text>
             </TouchableOpacity>
           </View>
+
           <View style={styles.sortConatiner}>
             <TouchableOpacity
               style={styles.btn}
@@ -149,16 +168,24 @@ class Home extends React.Component {
               <Text style={styles.sortText}>From most Expensive</Text>
             </TouchableOpacity>
           </View>
+
           <View style={styles.productsContaoner}>
             <Text style={styles.title}>Most popular products</Text>
+
             <FlatList
               data={filteredProducts}
-              renderItem={({ item }) => (
-                <View>
-                  <Item item={item} />
-                </View>
-              )}
+              renderItem={({ item }) => {
+                const isFavorite = this.state.favorites.includes(item.id);
+                return (
+                  <Item
+                    item={{ ...item, isFavorite }}
+                    toggleFavorite={this.toggleFavorite}
+                  />
+                );
+              }}
+              keyExtractor={(item) => item.id.toString()}
             />
+
             <TouchableOpacity style={styles.btn}>
               <Text style={styles.btnText}>View More</Text>
             </TouchableOpacity>
@@ -170,20 +197,11 @@ class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  iconsContainer: {
-    width: "90%",
-    alignSelf: "center",
-    marginTop: 30,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
   container: {
     flex: 1,
     width: "100%",
     backgroundColor: "#fff",
   },
-
   sliderContainer: {
     height: 200,
     justifyContent: "center",
@@ -191,13 +209,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 8,
   },
-
   imgItem: {
     width: "100%",
     height: "100%",
     borderRadius: 8,
   },
-
   item: {
     flex: 1,
     justifyContent: "center",
@@ -238,17 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   sortText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  sortConatiner: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical: 10,
-    borderRadius: 20,
-  },
-  sortText: {
-    color: "white",
+    color: "#fff",
     fontWeight: "bold",
   },
   searchContainer: {
@@ -265,98 +271,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-/*import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import Swiper from "react-native-swiper";
-
-class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      images: [],
-      currentIndex: 1,
-    };
-  }
-
-  async componentDidMount() {
-    const data = await fetch("https://691ccee63aaeed735c9232a0.mockapi.io/api/images/images");
-    const jsonData = await data.json();
-    this.setState({ images: jsonData });
-  }
-
-  render() {
-    const { images, currentIndex } = this.state;
-    return (
-      <View style={styles.container}>
-        <View style={styles.sliderContainer}>
-          {images.length > 0 && (
-            <>
-              <Swiper
-                autoplay={true}
-                activeDotColor="#22D4FFFF"
-                autoplayTimeout={5}
-                onIndexChanged={(index) => this.setState({ currentIndex: index + 1 })}
-              >
-                {images.map((item, i) => (
-                  <View style={styles.item} key={i}>
-                    <Image style={styles.imgItem} source={{ uri: item.uri }} resizeMode="cover" />
-                  </View>
-                ))}
-              </Swiper>
-              <View style={styles.pagination}>
-                <Text style={styles.paginationText}>
-                  {currentIndex} / {images.length}
-                </Text>
-              </View>
-            </>
-          )}
-        </View>
-
-     
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  sliderContainer: {
-    width: "90%",
-    height: 200,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 10,
-    borderRadius: 8,
-  },
-  item: {
-    flex: 1,
-    justifyContent: "center",
-    borderRadius: 8,
-  },
-  imgItem: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 8,
-  },
-  pagination: {
-    position: "absolute",
-    bottom: 10,
-    alignSelf: "center",
-    backgroundColor: "rgba(0,0,0,0.4)",
-    paddingHorizontal: 10,
-    paddingVertical: 3,
-    borderRadius: 10,
-  },
-  paginationText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
- 
-
-});
-
-export default Home;*/

@@ -9,6 +9,7 @@ import settings from "../screens/Settings";
 import Ios from "../screens/Ios";
 import Favorites from "../screens/Favorites";
 import Android from "../screens/Android";
+import Single from "../screens/Single";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,12 @@ const MainStackNavigator = ({navigation}) => {
     return(
         <Stack.Navigator screenOptions={ScreenOptionStyle}>
             <Stack.Screen name="Home" component={Home}/>
+            <Stack.Screen name="Ios" component={Ios}/>
+            <Stack.Screen name="Android" component={Android}/>
+            <Stack.Screen name="Single" component={Single}/>
+           
+            <Stack.Screen name="Favorites" component={Favorites}/>
+
             
         </Stack.Navigator>
     )
@@ -65,20 +72,5 @@ const SettingsStackNavigator = ({navigation}) => {
     )
 }
 
-const IosStackNavigator = ({navigation}) => {
-    return(
-        <Stack.Navigator screenOptions={ScreenOptionStyle}>
-            <Stack.Screen name="Ios" component={Ios}/>
-            <Stack.Screen name="Favorites" component={Favorites}/>
-        </Stack.Navigator>
-    )
-}
 
-const AndroidStackNavigator = ({navigation}) => {
-    return(
-        <Stack.Navigator screenOptions={ScreenOptionStyle}>
-            <Stack.Screen name="Android" component={Android}/>
-        </Stack.Navigator>
-    )
-}
-export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator, AndroidStackNavigator};
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, };
