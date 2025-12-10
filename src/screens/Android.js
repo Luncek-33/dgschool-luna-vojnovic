@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import data from "../data/products.json";
 import Item from "../components/item";
-import { CartContext } from "../context/cartContext"; // <-- OVO DODATI
+import { CartContext } from "../context/cartContext"; 
 
 class Android extends Component {
   constructor(props) {
