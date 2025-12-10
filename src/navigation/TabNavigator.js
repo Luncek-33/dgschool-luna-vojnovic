@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator,  } from "./StackNavigator";
+import { MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, IosStackNavigator, AndroidStackNavigator, CartStackNavigator,  } from "./StackNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Ios from "../screens/Ios";
 import Android from "../screens/Android";
@@ -36,7 +36,7 @@ class BottomStackNavigator extends React.Component {
         
         screenListeners={{
           focus: (e) => {
-            this.handleTabFocus(e.target?.split('-')[0]); // focus kad udje na odredjeni tab, sprema promjenu u e, target cuva id taba u kojem je user, ako je id npr. settings-33, uzima smo settings ovaj split id
+            this.handleTabFocus(e.target?.split('-')[0]); 
           },
         }}
       >
@@ -94,7 +94,7 @@ class BottomStackNavigator extends React.Component {
        
             <Tab.Screen
           name="Ios"
-          component={Ios}
+          component={IosStackNavigator}
           options={{
             tabBarLabel: "IOS",
             tabBarIcon: ({ color }) => (
@@ -105,11 +105,22 @@ class BottomStackNavigator extends React.Component {
 
            <Tab.Screen
           name="Android"
-          component={Android}
+          component={AndroidStackNavigator}
           options={{
             tabBarLabel: "Android",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="android" size={26} color={color} />
+            ),
+          }}
+        />
+
+          <Tab.Screen
+          name="Cart"
+          component={CartStackNavigator}
+          options={{
+            tabBarLabel: "Cart",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="cart" size={26} color={color} />
             ),
           }}
         />

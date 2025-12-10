@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useContext } from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { CartContext } from '../context/cartContext';   
 
 const Item = ({ item, toggleFavorite }) => {
   const navigation = useNavigation();
+  const { addToCart } = useContext(CartContext);        
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate("Single", { item })}>
@@ -26,11 +28,20 @@ const Item = ({ item, toggleFavorite }) => {
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.category}>{item.category}</Text>
           <Text style={styles.desc}>{item.description}</Text>
+
           <View style={styles.priceContainer}>
             <Text style={styles.price}>{item.price}</Text>
             <Text style={styles.price}>Stock: {item.stock}</Text>
             <Text style={styles.price}>Rating: {item.rating}</Text>
           </View>
+
+          <TouchableOpacity 
+            style={styles.cartBtn}
+            onPress={() => addToCart(item)}
+          >
+            <Text style={{ color: "white" }}>Add to Cart</Text>
+          </TouchableOpacity>
+
         </View>
 
       </View>
@@ -41,7 +52,7 @@ const Item = ({ item, toggleFavorite }) => {
 const styles = StyleSheet.create({
   cardContainer:{
     width: "100%",
-    height: 130,
+    height: 170,
     flexDirection:"row",
     backgroundColor: "white",
     borderRadius:8,
@@ -60,30 +71,19 @@ const styles = StyleSheet.create({
     marginVertical:10,
     width: "70%",
   },
-  name:{
-    fontWeight:"bold",
-    fontSize:16
-  },
-  category:{
-    fontSize:12,
-    color:"#22D4FFFF"
-  },
-  desc:{
-    fontStyle:"italic"
-  },
-  price:{
+  name:{ fontWeight:"bold", fontSize:16 },
+  category:{ fontSize:12, color:"#22D4FFFF" },
+  desc:{ fontStyle:"italic" },
+  price:{ 
     fontWeight:"bold",
     marginTop:5,
     backgroundColor:"#384053",
     color:"white",
     borderRadius: 100,
     paddingHorizontal:5,
-    width: "auto",
     marginRight: 5,
   },
-  priceContainer: {
-    flexDirection:"row",
-  },
+  priceContainer: { flexDirection:"row" },
 
   favoriteBtn: {
     position: "absolute",
@@ -91,6 +91,15 @@ const styles = StyleSheet.create({
     right: 5,
     zIndex: 20,
     padding: 5
+  },
+
+  cartBtn: {
+    marginTop: 10,
+    backgroundColor: "#1d1e29",
+    padding: 8,
+    borderRadius: 6,
+    alignItems: "center",
+    width: 120
   }
 });
 

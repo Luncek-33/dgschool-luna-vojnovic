@@ -10,6 +10,7 @@ import Ios from "../screens/Ios";
 import Favorites from "../screens/Favorites";
 import Android from "../screens/Android";
 import Single from "../screens/Single";
+import CartScreen from "../screens/Cart";
 
 const Stack = createStackNavigator();
 
@@ -24,11 +25,7 @@ const MainStackNavigator = ({navigation}) => {
     return(
         <Stack.Navigator screenOptions={ScreenOptionStyle}>
             <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Ios" component={Ios}/>
-            <Stack.Screen name="Android" component={Android}/>
-            <Stack.Screen name="Single" component={Single}/>
-           
-            <Stack.Screen name="Favorites" component={Favorites}/>
+          
 
             
         </Stack.Navigator>
@@ -71,6 +68,32 @@ const SettingsStackNavigator = ({navigation}) => {
         </Stack.Navigator>
     )
 }
+const IosStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="Ios" component={Ios}/>
+            <Stack.Screen name="fav" component={Favorites}/>
+        </Stack.Navigator>
+    )
+}
+
+const AndroidStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="Android" component={Android}/>
+            <Stack.Screen name="single" component={Single}/>
+        </Stack.Navigator>
+    )
+}
+
+const CartStackNavigator = ({navigation}) => {
+    return(
+        <Stack.Navigator screenOptions={ScreenOptionStyle}>
+            <Stack.Screen name="cart" component={CartScreen}/>
+            
+        </Stack.Navigator>
+    )
+}
 
 
-export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator, };
+export {MainStackNavigator, AboutStackNavigator, ProfileStackNavigator, ContactStackNavigator, SettingsStackNavigator,IosStackNavigator, AndroidStackNavigator, CartStackNavigator };

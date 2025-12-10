@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import data from "../data/products.json";
 import Item from "../components/item";
+import { CartContext } from "../context/cartContext"; // <-- OVO DODATI
 
 class Android extends Component {
   constructor(props) {
@@ -33,29 +34,41 @@ class Android extends Component {
       : this.state.products.android;
 
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.filterText}>Show in-stock only</Text>
-          <Switch
-            value={this.state.showInStockOnly}
-            onValueChange={(value) => this.setState({ showInStockOnly: value })}
-          ></Switch>
+      <CartContext.Consumer>
+        {({ addToCart }) => (
+          <ScrollView>
+            <View style={styles.container}>
+              <Text style={styles.filterText}>Show in-stock only</Text>
+              <Switch
+                value={this.state.showInStockOnly}
+                onValueChange={(value) =>
+                  this.setState({ showInStockOnly: value })
+                }
+              />
 
-          <Text style={styles.desc}>Android Products</Text>
-          <FlatList
-            data={filterProducts}
-            renderItem={({ item }) => (
-              <View>
-                <Item item={item} />
-                <Button>Add to Cart</Button>
-              </View>
-            )}
-          />
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>View More</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+              <Text style={styles.desc}>Android Products</Text>
+
+              <FlatList
+                data={filterProducts}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <View>
+                    <Item item={item} />
+                    <Button
+                      title="Add to Cart"
+                      onPress={() => addToCart(item)}
+                    />
+                  </View>
+                )}
+              />
+
+              <TouchableOpacity style={styles.btn}>
+                <Text style={styles.btnText}>View More</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        )}
+      </CartContext.Consumer>
     );
   }
 }
@@ -71,9 +84,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
   },
-  itemWrapper: {
-    marginBottom: 15,
-  },
   btn: {
     backgroundColor: "#1d1e29",
     padding: 10,
@@ -85,7 +95,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-
   filterText: {
     fontSize: 16,
   },
